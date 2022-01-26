@@ -1,12 +1,14 @@
 package com.films.api.films_api.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class User implements Serializable{
@@ -21,7 +23,8 @@ public class User implements Serializable{
 
     private String password;
 
-    private Instant bornDate;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate bornDate;
 
     private String userImg;
 
@@ -29,7 +32,7 @@ public class User implements Serializable{
         
     }
 
-    public User(Integer id, String name, String email, String password, Instant bornDate, String userImg) {
+    public User(Integer id, String name, String email, String password, LocalDate bornDate, String userImg) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -70,11 +73,11 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public Instant getBornDate() {
+    public LocalDate getBornDate() {
         return bornDate;
     }
 
-    public void setBornDate(Instant bornDate) {
+    public void setBornDate(LocalDate bornDate) {
         this.bornDate = bornDate;
     }
 

@@ -3,6 +3,8 @@ package com.films.api.films_api.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +20,9 @@ public class Film implements Serializable {
 
     private String filmName;
 
-    private String description;
+    private String sinopse;
 
+    @Enumerated(EnumType.STRING)
     private FilmCategory filmCategory;
 
     private String imgUrl;
@@ -27,10 +30,10 @@ public class Film implements Serializable {
     public Film() {
     }
 
-    public Film(Long id, String filmName, String description, FilmCategory filmCategory, String imgUrl) {
+    public Film(Long id, String filmName, String sinopse, FilmCategory filmCategory, String imgUrl) {
         this.id = id;
         this.filmName = filmName;
-        this.description = description;
+        this.sinopse = sinopse;
         this.filmCategory = filmCategory;
         this.imgUrl = imgUrl;
     }
@@ -51,12 +54,12 @@ public class Film implements Serializable {
         this.filmName = filmName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getsinopse() {
+        return sinopse;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setsinopse(String sinopse) {
+        this.sinopse = sinopse;
     }
 
     public FilmCategory getFilmCategory() {
