@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 
-import com.films.api.films_api.repositories.enumerated.FilmCategory;
+import com.films.api.films_api.entities.enumerated.FilmCategory;
 
 @Entity
 public class Film implements Serializable {
