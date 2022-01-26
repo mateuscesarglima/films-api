@@ -8,10 +8,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.films.api.films_api.entities.enumerated.FilmCategory;
 
 @Entity
+@Table(name = "tb_film")
 public class Film implements Serializable {
     
     @Id
