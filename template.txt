@@ -1,0 +1,17 @@
+filmes {
+    name - String;
+    description - String;
+    imgUrl - String;
+    (enum) category;
+}
+
+
+
+usuario{
+    id Long;
+    name - String;
+    email - String;
+    password - String;
+    bornDate - Instant;
+    userImg - String;
+}
