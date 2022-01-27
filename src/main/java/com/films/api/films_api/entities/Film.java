@@ -9,8 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import com.films.api.films_api.entities.enumerated.FilmCategory;
 
@@ -22,16 +21,12 @@ public class Film implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "The user password cannot be empty")
-    @NotNull
+    @NotBlank(message = "FIeld film name cannot be null")
     private String filmName;
 
-    @NotEmpty(message = "The user password cannot be empty")
-    @NotNull
+    @NotBlank(message = "Field 'sinope' cannot be null")
     private String sinopse;
 
-    @NotEmpty(message = "The user password cannot be empty")
-    @NotNull
     @Enumerated(EnumType.STRING)
     private FilmCategory filmCategory;
 

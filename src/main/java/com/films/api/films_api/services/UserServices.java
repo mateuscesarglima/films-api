@@ -3,6 +3,8 @@ package com.films.api.films_api.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.ConstraintViolationException;
+
 import com.films.api.films_api.entities.User;
 import com.films.api.films_api.exceptions.DatabaseException;
 import com.films.api.films_api.exceptions.ResourceNotFoundException;
@@ -56,7 +58,12 @@ public class UserServices {
    }
 
    public User insert(User obj) {
-      return repository.save(obj);
+      
+        try{
+           return repository.save(obj);
+        }catch(ConstraintViolationException e){
+           throw new DatabaseException(e.getMessage());
+        }
    }
 
 }

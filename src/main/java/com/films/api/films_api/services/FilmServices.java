@@ -9,7 +9,6 @@ import com.films.api.films_api.exceptions.ResourceNotFoundException;
 import com.films.api.films_api.repositories.FilmRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -33,16 +32,16 @@ public class FilmServices {
     }
 
     public void delete(Long id) {
-    try{
+        try {
             repository.deleteById(id);
-        }catch(EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException(id);
-        }catch(DataIntegrityViolationException e){
+        } catch (DataIntegrityViolationException e) {
             throw new DatabaseException(e.getMessage());
         }
     }
 
-    public Film update(Film obj, Long id){
+    public Film update(Film obj, Long id) {
         Film entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
         updateData(entity, obj);
         return repository.save(entity);

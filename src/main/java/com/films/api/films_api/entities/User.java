@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,12 +21,13 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "The user name cannot be empty")
-    @NotNull
+    @NotBlank(message = "Field 'name' cannot be null")
     private String name;
 
+    @Email(message = "The email address must be well formatted")
     private String email;
 
+    @NotBlank(message = "Field 'password' cannot be null")
     private String password;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
