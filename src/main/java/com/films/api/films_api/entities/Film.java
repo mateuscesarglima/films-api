@@ -56,11 +56,11 @@ public class Film implements Serializable {
         this.filmName = filmName;
     }
 
-    public String getsinopse() {
+    public String getSinopse() {
         return sinopse;
     }
 
-    public void setsinopse(String sinopse) {
+    public void setSinopse(String sinopse) {
         this.sinopse = sinopse;
     }
 

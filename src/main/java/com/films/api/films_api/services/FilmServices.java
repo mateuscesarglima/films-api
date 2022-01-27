@@ -9,6 +9,7 @@ import com.films.api.films_api.exceptions.ResourceNotFoundException;
 import com.films.api.films_api.repositories.FilmRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,18 @@ public class FilmServices {
         }
     }
 
-    
+    public Film update(Film obj, Long id){
+        Film entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+        updateData(entity, obj);
+        return repository.save(entity);
+
+    }
+
+    private void updateData(Film entity, Film obj) {
+        entity.setFilmName(obj.getFilmName());
+        entity.setFilmCategory(obj.getFilmCategory());
+        entity.setSinopse(obj.getSinopse());
+        entity.setImgUrl(obj.getImgUrl());
+    }
 
 }
