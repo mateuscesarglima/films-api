@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolationException;
 
 import com.films.api.films_api.entities.User;
 import com.films.api.films_api.exceptions.DatabaseException;
+import com.films.api.films_api.exceptions.InsertException;
 import com.films.api.films_api.exceptions.ResourceNotFoundException;
 import com.films.api.films_api.repositories.UserRepository;
 
@@ -62,7 +63,7 @@ public class UserServices {
         try{
            return repository.save(obj);
         }catch(ConstraintViolationException e){
-           throw new DatabaseException(e.getMessage());
+           throw new InsertException(e.getMessage());
         }
    }
 

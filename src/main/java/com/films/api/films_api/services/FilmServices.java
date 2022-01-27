@@ -3,8 +3,11 @@ package com.films.api.films_api.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.ConstraintViolationException;
+
 import com.films.api.films_api.entities.Film;
 import com.films.api.films_api.exceptions.DatabaseException;
+import com.films.api.films_api.exceptions.InsertException;
 import com.films.api.films_api.exceptions.ResourceNotFoundException;
 import com.films.api.films_api.repositories.FilmRepository;
 
@@ -20,7 +23,11 @@ public class FilmServices {
     private FilmRepository repository;
 
     public List<Film> findAll() {
-        return repository.findAll();
+        try{
+            return repository.findAll();
+        }catch(EmptyResultDataAccessException e){
+            throw new ResourceNotFoundException(e.getMessage());
+        }
     }
 
     public Film findByid(Long id) {
@@ -53,6 +60,14 @@ public class FilmServices {
         entity.setFilmCategory(obj.getFilmCategory());
         entity.setSinopse(obj.getSinopse());
         entity.setImgUrl(obj.getImgUrl());
+    }
+
+    public Film insert(Film obj) {
+        try {
+            return repository.save(obj);
+        } catch (ConstraintViolationException e) {
+            throw new InsertException(e.getMessage());
+        }
     }
 
 }
