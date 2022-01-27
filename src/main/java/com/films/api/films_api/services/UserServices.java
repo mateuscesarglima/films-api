@@ -55,4 +55,8 @@ public class UserServices {
       entity.setUserImg(obj.getUserImg());
    }
 
+   public User insert(User obj) {
+      return repository.save(obj);
+   }
+
 }
