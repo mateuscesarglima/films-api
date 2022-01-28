@@ -21,10 +21,10 @@ public class Film implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "FIeld film name cannot be null")
+    @NotBlank(message = "{filmName.not.blank}")
     private String filmName;
 
-    @NotBlank(message = "Field 'sinope' cannot be null")
+    @NotBlank(message = "{sinopse.not.blank}")
     private String sinopse;
 
     @Enumerated(EnumType.STRING)

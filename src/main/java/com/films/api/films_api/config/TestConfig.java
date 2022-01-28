@@ -29,9 +29,9 @@ public class TestConfig implements CommandLineRunner{
     public void run(String... args) throws Exception {
         
         User u1 = new User(null, "Mateus Cesar", "Mateuscesarglima@gmail.com", "1234" , LocalDate.of(2000, 06, 15) , "");
-        User u2 = new User(null, "Mateus Cesar", "Mateuscesarglima@gmail.com", "1234" , LocalDate.of(2000, 06, 15) , "");
-        User u3 = new User(null, "Mateus Cesar", "Mateuscesarglima@gmail.com", "1234" , LocalDate.of(2000, 06, 15), "");
-        User u4 = new User(null, "Mateus Cesar", "Mateuscesarglima@gmail.com", "1234" , LocalDate.of(2000, 06, 15), "");
+        User u2 = new User(null, "Felipe Cesar", "felipecesar@gmail.com", "123456" , LocalDate.of(1997, 05, 21) , "");
+        User u3 = new User(null, "Marcos Rodrigo", "serraria@gmail.com", "123123" , LocalDate.of(1995, 12, 17), "");
+        User u4 = new User(null, "Marcos Antonio", "marcosantonio@hotmail.com", "123456" , LocalDate.of(1980, 06, 15), "");
 
         Film f1 = new Film(null, "A volta dos que não foram", "Era uma vez...", FilmCategory.COMEDY, "");
         Film f2 = new Film(null, "Percy jackson", "Percy Jackson (Logan Lerman) é um jovem que enfrenta problemas na escola", FilmCategory.FICTION, "");

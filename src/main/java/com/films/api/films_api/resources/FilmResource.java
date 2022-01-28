@@ -3,6 +3,8 @@ package com.films.api.films_api.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.films.api.films_api.entities.Film;
 import com.films.api.films_api.services.FilmServices;
 
@@ -58,7 +60,7 @@ public class FilmResource {
     }
 
     @PostMapping
-    public ResponseEntity<Film> insert(@RequestBody Film obj){
+    public ResponseEntity<Film> insert(@RequestBody @Valid Film obj){
         
         services.insert(obj);
 

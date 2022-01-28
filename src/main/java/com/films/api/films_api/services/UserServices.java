@@ -66,5 +66,4 @@ public class UserServices {
            throw new InsertException(e.getMessage());
         }
    }
-
 }

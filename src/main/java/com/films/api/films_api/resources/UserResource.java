@@ -3,6 +3,8 @@ package com.films.api.films_api.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.films.api.films_api.entities.User;
 import com.films.api.films_api.services.UserServices;
 
@@ -69,7 +71,7 @@ public class UserResource {
     }
 
     @PostMapping
-    public ResponseEntity<User> insert(@RequestBody User obj){
+    public ResponseEntity<User> insert(@RequestBody @Valid User obj){
 
         obj = services.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();

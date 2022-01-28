@@ -21,13 +21,14 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Field 'name' cannot be null")
+    @NotBlank(message = "{name.not.blank}")
     private String name;
 
-    @Email(message = "The email address must be well formatted")
+    @NotBlank(message = "{email.not.blank}")
+    @Email(message = "{email.not.valid}")
     private String email;
-
-    @NotBlank(message = "Field 'password' cannot be null")
+    
+    @NotBlank(message = "{password.not.blank}")
     private String password;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
