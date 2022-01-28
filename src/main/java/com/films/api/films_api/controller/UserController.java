@@ -1,4 +1,4 @@
-package com.films.api.films_api.resources;
+package com.films.api.films_api.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -23,7 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserController {
 
     @Autowired
     private UserServices services;
