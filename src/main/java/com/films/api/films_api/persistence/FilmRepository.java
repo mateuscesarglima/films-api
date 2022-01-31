@@ -1,6 +1,6 @@
-package com.films.api.films_api.repositories;
+package com.films.api.films_api.persistence;
 
-import com.films.api.films_api.entities.Film;
+import com.films.api.films_api.model.Film;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

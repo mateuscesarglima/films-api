@@ -44,11 +44,6 @@ public class ResourceExceptionHandler {
 
         List<FieldError> fieldErrorList = e.getBindingResult().getFieldErrors();
 
-
-        for(int i = 0; i < fieldErrorList.size(); i++){
-            
-        }
-
         fieldErrorList.forEach(
                 error -> {
                     String field = error.getField();

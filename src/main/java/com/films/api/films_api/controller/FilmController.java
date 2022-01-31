@@ -1,11 +1,11 @@
-package com.films.api.films_api.resources;
+package com.films.api.films_api.controller;
 
 import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
 
-import com.films.api.films_api.entities.Film;
+import com.films.api.films_api.model.Film;
 import com.films.api.films_api.services.FilmServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(value = "/films")
-public class FilmResource {
+public class FilmController {
 
     @Autowired
     private FilmServices services;

@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.films.api.films_api.entities.User;
+import com.films.api.films_api.model.User;
 import com.films.api.films_api.services.UserServices;
 
 import org.springframework.beans.factory.annotation.Autowired;

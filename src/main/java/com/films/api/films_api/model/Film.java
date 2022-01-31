@@ -1,4 +1,4 @@
-package com.films.api.films_api.entities;
+package com.films.api.films_api.model;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.films.api.films_api.entities.enumerated.FilmCategory;
+import com.films.api.films_api.model.enumerated.FilmCategory;
 
 @Entity
 @Table(name = "tb_film")

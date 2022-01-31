@@ -1,4 +1,4 @@
-package com.films.api.films_api.entities;
+package com.films.api.films_api.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;

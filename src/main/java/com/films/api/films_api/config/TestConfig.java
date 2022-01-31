@@ -3,11 +3,11 @@ package com.films.api.films_api.config;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import com.films.api.films_api.entities.Film;
-import com.films.api.films_api.entities.User;
-import com.films.api.films_api.entities.enumerated.FilmCategory;
-import com.films.api.films_api.repositories.FilmRepository;
-import com.films.api.films_api.repositories.UserRepository;
+import com.films.api.films_api.model.Film;
+import com.films.api.films_api.model.User;
+import com.films.api.films_api.model.enumerated.FilmCategory;
+import com.films.api.films_api.persistence.FilmRepository;
+import com.films.api.films_api.persistence.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

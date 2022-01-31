@@ -3,10 +3,10 @@ package com.films.api.films_api.services;
 import java.util.List;
 import java.util.Optional;
 
-import com.films.api.films_api.entities.Film;
 import com.films.api.films_api.exceptions.DatabaseException;
 import com.films.api.films_api.exceptions.ResourceNotFoundException;
-import com.films.api.films_api.repositories.FilmRepository;
+import com.films.api.films_api.model.Film;
+import com.films.api.films_api.persistence.FilmRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

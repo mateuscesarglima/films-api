@@ -1,4 +1,4 @@
-package com.films.api.films_api.entities.enumerated;
+package com.films.api.films_api.model.enumerated;
 
 public enum FilmCategory {
     
