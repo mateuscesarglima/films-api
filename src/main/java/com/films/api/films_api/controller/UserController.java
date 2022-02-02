@@ -8,17 +8,12 @@ import javax.validation.Valid;
 import com.films.api.films_api.model.User;
 import com.films.api.films_api.services.UserServices;
 
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
@@ -27,6 +22,8 @@ public class UserController {
 
     @Autowired
     private UserServices services;
+
+
 
     @GetMapping
     public ResponseEntity<List<User>> findAll(){
@@ -78,4 +75,21 @@ public class UserController {
         return ResponseEntity.created(uri).body(obj);
 
     }
+
+    @GetMapping("/validarSenha")
+    public ResponseEntity<Boolean> validarSenha(@RequestParam String email, @RequestParam String password){
+
+
+        }
+
+
+
+
+
+
+
+        return null;
+    }
+
+
 }

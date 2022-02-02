@@ -11,6 +11,8 @@ import com.films.api.films_api.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +20,8 @@ public class UserServices {
 
    @Autowired
    private UserRepository repository;
+
+   private PasswordEncoder passwordEncoder;
 
    public List<User> findAll() {
       return repository.findAll();
@@ -58,6 +62,22 @@ public class UserServices {
    public User insert(User obj) {
 
       return repository.save(obj);
+
+   }
+
+   public User findByEmail(String email){
+      return repository.findByEmail(email);
+   }
+
+   public User authenticate(String email,String password){
+
+      boolean valid = false;
+      User user = repository.findByEmail(email);
+      if(user != null){
+         
+      }
+
+
 
    }
 }
