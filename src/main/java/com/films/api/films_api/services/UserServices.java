@@ -65,19 +65,21 @@ public class UserServices {
 
    }
 
-   public User findByEmail(String email){
-      return repository.findByEmail(email);
-   }
-
    public User authenticate(String email,String password){
 
-      boolean valid = false;
-      User user = repository.findByEmail(email);
-      if(user != null){
-         
+      Optional<User> optUser = repository.findByEmail(email);
+      if(optUser.isEmpty()){
+         return null;
       }
 
+      boolean valid = false;
+      valid = passwordEncoder.matches(password, optUser.get().getPassword());
 
+      if(!valid){
+         return null;
+      }
+
+      return optUser.get();
 
    }
 }

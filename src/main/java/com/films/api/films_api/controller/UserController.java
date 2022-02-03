@@ -76,19 +76,19 @@ public class UserController {
 
     }
 
-    @GetMapping("/validarSenha")
-    public ResponseEntity<Boolean> validarSenha(@RequestParam String email, @RequestParam String password){
+    @GetMapping("/authenticate")
+    public ResponseEntity<Boolean> authenticate(@RequestParam String email, @RequestParam String password){
 
+        ResponseEntity<Boolean> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
+        boolean result = false;
+        User user = services.authenticate(email, password);
+        if(user != null){
+            response = ResponseEntity.ok().body(true);
         }
 
+        return response;
 
-
-
-
-
-
-        return null;
     }
 
 
