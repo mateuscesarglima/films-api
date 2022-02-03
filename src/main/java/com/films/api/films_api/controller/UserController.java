@@ -24,41 +24,40 @@ public class UserController {
     private UserServices services;
 
 
-
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
+    public ResponseEntity<List<User>> findAll() {
 
         ResponseEntity<List<User>> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         List<User> obj = services.findAll();
 
-        if(!obj.isEmpty()){
+        if (!obj.isEmpty()) {
             response = ResponseEntity.ok().body(obj);
         }
 
         return response;
-        
+
     }
 
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
-        
+    public ResponseEntity<User> findById(@PathVariable Long id) {
+
         User obj = services.findById(id);
 
         return ResponseEntity.ok().body(obj);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<User> update(@RequestBody User obj, @PathVariable Long id){
-        
+    public ResponseEntity<User> update(@RequestBody User obj, @PathVariable Long id) {
+
         obj = services.update(obj, id);
 
         return ResponseEntity.ok().body(obj);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
 
         services.deleteById(id);
 
@@ -68,26 +67,35 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> insert(@RequestBody @Valid User obj){
-        
+    public ResponseEntity<User> insert(@RequestBody @Valid User obj) {
+
         obj = services.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
 
     }
 
-    @GetMapping("/authenticate")
-    public ResponseEntity<Boolean> authenticate(@RequestParam String email, @RequestParam String password){
+    @PostMapping("/authenticate")
+    public ResponseEntity<Boolean> authenticate(@RequestParam String email, @RequestParam String password) {
 
-        ResponseEntity<Boolean> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        boolean obj = services.authenticate(email, password);
+        if(obj){
+            return ResponseEntity.ok().body(obj);
+        }
+        return ResponseEntity.notFound().build();
 
-        boolean result = false;
-        User user = services.authenticate(email, password);
-        if(user != null){
-            response = ResponseEntity.ok().body(true);
+    }
+
+    @GetMapping("/email")
+    public ResponseEntity<User> findByEmail(@RequestParam String email) {
+
+        User user = services.findByEmail(email);
+
+        if (user != null) {
+            return new ResponseEntity<>(user,HttpStatus.OK);
         }
 
-        return response;
+        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
 
     }
 

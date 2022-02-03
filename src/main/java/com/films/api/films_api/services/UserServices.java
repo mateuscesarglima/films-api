@@ -18,68 +18,65 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServices {
 
-   @Autowired
-   private UserRepository repository;
+    @Autowired
+    private UserRepository repository;
 
-   private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-   public List<User> findAll() {
-      return repository.findAll();
-   }
+    public List<User> findAll() {
+        return repository.findAll();
+    }
 
-   public User findById(Long id) {
+    public User findById(Long id) {
 
-      Optional<User> obj = repository.findById(id);
+        Optional<User> obj = repository.findById(id);
 
-      return obj.orElseThrow(() -> new ResourceNotFoundException(id));
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 
-   }
+    }
 
-   public void deleteById(Long id) {
-      try {
-         repository.deleteById(id);
-      } catch (EmptyResultDataAccessException e) {
-         throw new ResourceNotFoundException(id);
-      } catch (DataIntegrityViolationException e) {
-         throw new DatabaseException(e.getMessage());
-      }
-   }
+    public void deleteById(Long id) {
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
+    }
 
-   public User update(User obj, Long id) {
-      User entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
-      updateData(entity, obj);
-      return repository.save(entity);
-   }
+    public User update(User obj, Long id) {
+        User entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+        updateData(entity, obj);
+        return repository.save(entity);
+    }
 
-   private void updateData(User entity, User obj) {
-      entity.setName(obj.getName());
-      entity.setEmail(obj.getEmail());
-      entity.setPassword(obj.getPassword());
-      entity.setBornDate(obj.getBornDate());
-      entity.setUserImg(obj.getUserImg());
-   }
+    private void updateData(User entity, User obj) {
+        entity.setName(obj.getName());
+        entity.setEmail(obj.getEmail());
+        entity.setPassword(obj.getPassword());
+        entity.setBornDate(obj.getBornDate());
+        entity.setUserImg(obj.getUserImg());
+    }
 
-   public User insert(User obj) {
+    public User insert(User obj) {
 
-      return repository.save(obj);
+        obj.setPassword(passwordEncoder.encode(obj.getPassword()));
+        return repository.save(obj);
 
-   }
+    }
 
-   public User authenticate(String email,String password){
+    public boolean authenticate(String email, String password) {
+        boolean isValid = false;
+        User user = repository.findByEmail(email);
+        if(user != null){
+            isValid = passwordEncoder.matches(password, user.getPassword());
+        }
+        return isValid;
+    }
 
-      Optional<User> optUser = repository.findByEmail(email);
-      if(optUser.isEmpty()){
-         return null;
-      }
-
-      boolean valid = false;
-      valid = passwordEncoder.matches(password, optUser.get().getPassword());
-
-      if(!valid){
-         return null;
-      }
-
-      return optUser.get();
-
-   }
+    public User findByEmail(String email) {
+        return repository.findByEmail(email);
+    }
 }

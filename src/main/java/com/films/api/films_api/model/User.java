@@ -80,8 +80,7 @@ public class User implements Serializable{
     }
 
     public void setPassword(String password) {
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.password = passwordEncoder.encode(password);
+        this.password = password;
     }
 
     public LocalDate getBornDate() {
