@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import com.films.api.films_api.model.enumerated.FilmCategory;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 @Entity
 @Table(name = "tb_film")

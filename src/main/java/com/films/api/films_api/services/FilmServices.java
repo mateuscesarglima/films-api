@@ -49,7 +49,6 @@ public class FilmServices {
         Film entity = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
         updateData(entity, obj);
         return repository.save(entity);
-
     }
 
     private void updateData(Film entity, Film obj) {
